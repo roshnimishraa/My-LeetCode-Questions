@@ -1,0 +1,11 @@
+Brute force : Two Inner for loops 
+TC : O(N)^2
+SC : O(1) 
+The steps are as follows:
+
+1. We will run a loop that will select the elements of the array one by one.
+2. Now, for each element, we will run another loop and count its occurrence in the given array.
+3. If any element occurs more than the floor of (N/2), we will simply return it.
+
+Better Approach : Hashing 
+TC : O(1) 
