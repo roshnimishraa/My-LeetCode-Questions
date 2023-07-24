@@ -1,0 +1,27 @@
+Brute Force : Merge Sort 
+TC : O(NlogN)
+SC : O(N)
+
+Better Solution 
+1. Take ZeroCount, OneCount, TwoCount 
+2. three loop for sort the ZeroCount, OneCount, TwoCount
+
+TC : O(2N) 
+SC : O(1) 
+
+Optimal Solution : Dutch National Flag Algorithm 
+0->Red 
+1->White 
+2->Blue 
+
+****Using Three Pointer(low,mid,high)****
+Check Value of arr[mid] -
+1. if 0 -> swap(arr[low],arr[mid])  low++ , mid++
+2. if 1 -> mid++
+3. if 2 -> swap(arr[mid],arr[high])    high--
+
+3 Rule -> 
+0 to low-1 -> 0 
+low to mid-1 -> 1 
+high+1 to n-1 -> 2
+         
