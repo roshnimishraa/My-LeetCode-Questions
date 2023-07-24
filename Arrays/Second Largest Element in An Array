@@ -1,0 +1,18 @@
+Naive Approach : Second Largest Element TC: O(N)
+In this approach, we find the 2nd largest element in the array, by ignoring the largest element. It requires two traversals of the array
+
+Efficient Approach
+In this approach, we find the 2nd largest element in the array, by a single traversal through the array. We maintain the record of the Largest and Second Largest element, which traversing through the array.
+
+Time Complexity: O(n)
+
+a0,a1,a2,...........ai-1, ai 
+a0 to ai-1 = largest 
+
+there can be 3 cases 
+1. a[i] > a[largest] 
+2. a[i] == a[largest] 
+3. a[i] < a[largest] 
+  a. SecondLargest = -1 : SecondLargest = i
+  b. a[i] <= a[SecondLargest] : Ignore 
+  c. a[i] > a[SecondLargest] : SecondLargest = i
