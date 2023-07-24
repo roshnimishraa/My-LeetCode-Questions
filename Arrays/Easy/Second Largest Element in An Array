@@ -1,5 +1,8 @@
 Naive Approach : Second Largest Element TC: O(N)
 In this approach, we find the 2nd largest element in the array, by ignoring the largest element. It requires two traversals of the array
+Forward loop -> finding largest 
+Backward loop from n-2 -> finding SecondLargest 
+
 
 Efficient Approach
 In this approach, we find the 2nd largest element in the array, by a single traversal through the array. We maintain the record of the Largest and Second Largest element, which traversing through the array.
