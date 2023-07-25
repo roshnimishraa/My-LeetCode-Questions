@@ -44,7 +44,7 @@ public:
                 mid++;
             }
             else{
-                //nums[i] == 2
+                //nums[mid] == 2
                 swap(nums[mid],nums[high]);
                 high--;
             }
