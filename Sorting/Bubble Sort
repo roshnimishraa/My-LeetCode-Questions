@@ -8,6 +8,8 @@ Pass n : 0 to 1
 First loop (i) -> n-1 to >=0 
 Second Inner Loop (j) -> 0 to <=i-1 
 
+TC : O(N2) -> worst & average case for best case O(n) 
+SC : O(1) 
 
 
 void bubbleSort(int arr[], int n) 
