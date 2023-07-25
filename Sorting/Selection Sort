@@ -1,6 +1,6 @@
 Problem Link : https://tinyurl.com/2oyfemdh
 
-Approach : 
+Approach : Select Minimum and Swaps
 Generalisation searching is from n-2 to n-1 
 TC: O(N2)
 SC : O(1) 
