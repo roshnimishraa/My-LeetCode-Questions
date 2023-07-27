@@ -1,0 +1,5 @@
+Problem link : https://leetcode.com/problems/koko-eating-bananas/
+
+Koko Eating Bananas -> Return the minimum integer K such that Koko can eat all bananas in h ours.
+k-> bananas/hr
+take ceil of hours
