@@ -1,0 +1,5 @@
+Floor -> (largest element in the array <= x) 
+  Approach for Floor -> the floor algorithm based on the Binary Search algorithm.
+
+Ceiling ->  (smallest element in the array >= x)
+  Approach for Ceiling ->  the ceiling of x is basically the lower bound of x.
