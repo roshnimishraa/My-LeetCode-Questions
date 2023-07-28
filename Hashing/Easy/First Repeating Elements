@@ -1,7 +1,7 @@
 Problem Link : https://practice.geeksforgeeks.org/problems/first-repeating-element4018/1
 Naive Approach : 
 Run two nested loops, the outer loop picks an element one by one, and the inner loop checks whether the element is repeated or not. Once a repeating element is found, break the loops and print the element.
-Time Complexity: O(N2)
+Time Complexity: O(N2) 
 Auxiliary Space: O(1)
 
 
