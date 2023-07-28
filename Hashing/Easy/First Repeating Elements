@@ -5,7 +5,7 @@ Time Complexity: O(N2)
 Auxiliary Space: O(1)
 
 
-Efficient Approach : Hashing (unordered_map)
+Efficient Approach :  hashing (unordered_map)
 The idea is to use Hash array to store the occurrence of elements. Then traverse the array from left to right and return the first element with occurrence more than 1.
 
 Time Complexity: O(N).
