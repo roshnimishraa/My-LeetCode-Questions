@@ -1,1 +1,26 @@
+Naive Appraoch :
+TC: O(N*M) 
+SC : O(1) 
+1. Use two loop i & j for row and col 
+2. if mat[i][j] == 1 then row++
+3. seach for max 1 in row 
+
+int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
+    int ans = 0, res = -1;
+    for(int i =0;i<n;i++)
+    { 
+int row = 0;
+        for(int j =0;j<m;j++)
+        {
+            if(matrix[i][j]==1)
+             row ++; 
+        }
+        if(row>ans) res = i;      
+       ans = max(ans, row);
+}
+    return res;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+Approach : Binary Seach 
 
