@@ -1,4 +1,6 @@
 Approach : stack & nextGr array
+Corner Case : Elements of array are distinct
+
   1. pushing last element into st and initializing nextGr as -1
   2. checking array elements from n-2 if 
 a) st.size() > 0 && st.top() <= arr[i] -> Agar stack ka top chhota arr[i] then use stack se pop kro 
