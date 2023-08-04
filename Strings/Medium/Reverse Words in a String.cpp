@@ -7,7 +7,7 @@ Approach
 •	Use a stack to push all the words in a stack
 •	Now, all the words of the string are present in the stack, but in reverse order
 •	Pop elements of the stack one by one and add them to our answer variable. Remember to add a space between the words as well. 
-•	Here’s a quick demonstration of the same
+                               
 
 
 class Solution {
