@@ -12,6 +12,9 @@ Logic :  left=0, right=0, len=0 [len = right - left + 1]
 1. insert element into set if it is unique and do right++
 2. if duplication element found while traversing array then remove from set and do left++ and right++ 
 3.  return max len(max of substring) 
+4. Storing occurences of character in map
+
+
 
 int solve(string str) {
 
