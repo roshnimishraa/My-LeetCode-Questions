@@ -3,7 +3,7 @@ Logic :
   if(n%2==0)  then ans=x*x and n=n/2
 2. for n=odd  ans = ans*x and n = n-1
 
-TC: O(N) 
+TC: O(log N)
 SC : O(N)
 
  class Solution {
