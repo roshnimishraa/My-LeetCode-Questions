@@ -3,8 +3,9 @@ Binary Heap is used in
 2. to implement priority queue 
 
 -> Binary heap is a complete binary tree stored as an array 
-Complete binary tree - A binary tree which is completely filled except possibly the last level it is filled from left to right
+Its a complete tree (All levels are completely filled except possibly the last level and the last level has all keys as left as possible). This property of Binary Heap makes them suitable to be stored in an array.
 
+  
 -> Merge Sort and Quick Sort are faster than heap sort 
 
 Priority queue operations
