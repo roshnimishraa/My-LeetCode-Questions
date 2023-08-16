@@ -1,0 +1,20 @@
+    Time complexity: O(n)
+    Space complexity: O(1)
+
+
+Node * insertAtTail(Node *head, int k) {
+    Node *curr =head;
+        Node *NodeToInsert = new Node(k);
+    if(head == NULL){
+        return NodeToInsert;
+    }
+    while(curr->next != NULL){
+        curr = curr->next;
+        
+    }
+
+    curr->next=NodeToInsert;
+    NodeToInsert->prev = curr;
+    curr=NodeToInsert;
+return head;
+}
