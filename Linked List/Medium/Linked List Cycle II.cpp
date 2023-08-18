@@ -32,7 +32,12 @@ Efficient Approach : Two - Pointer Approach (slow & fast pointer)
  TC : O(N)
  SC : O(1) 
 
-
+Approach : 
+1. When the two pointers meet, we know that there is a cycle in the linked list.
+2. We then reset the slow pointer to the head of the linked list and move both pointers at the same pace, one step at a time, until they meet again.
+3. The node where they meet is the starting point of the cycle.
+4. If there is no cycle in the linked list, the algorithm will return null.
+    
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
