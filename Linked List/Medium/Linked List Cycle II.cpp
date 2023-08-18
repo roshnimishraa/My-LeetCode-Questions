@@ -1,31 +1,31 @@
 Statement : if ele exists return index if not exists return null
 
-Brute force : Hashing 
+Brute force : Hashing(unorder_set)
 Approach : store num in hash table if it again come return true
 
 Time complexity: O(N)
 Space complexity: O(N)
 
+
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-//         brute force
-        int i=0;
-    unordered_map<ListNode*,int> umap;
-        ListNode *temp =head;
-        while(temp != NULL){
-    //if element exists
-            if(umap.find(temp) != umap.end()){
-                return temp; 
+        unordered_set<ListNode*> st; //storing address 
+        ListNode *curr = head;
+        while(curr != NULL){
+            // if element exist 
+            if(st.find(curr) != st.end()){
+                return curr;
             }
-            umap[temp] =i++;
-            temp=temp->next;
+            else{
+                st.insert(curr);
+                curr = curr->next;
+            }
         }
         return NULL;
     }
-};
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------
+};    
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Efficient Approach : Two - Pointer Approach (slow & fast pointer)
 
@@ -33,7 +33,29 @@ Efficient Approach : Two - Pointer Approach (slow & fast pointer)
  SC : O(1) 
 
 
-
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *fast =head;
+        ListNode *slow =head;
+        while(fast != NULL && fast ->next != NULL){
+            fast = fast->next->next;
+            slow = slow->next;
+            if(slow == fast){
+            slow =head;
+                while(slow != fast){
+                    slow = slow ->next;
+                    fast = fast->next;
+                }
+                   return slow;
+            }
+         
+        }
+        
+      //if cycle not exist 
+        return NULL;
+    }
+};
 
 
 
