@@ -23,3 +23,13 @@ log 8 = 3 (height should be 3)
 5. Full Binary Tree : Either has 0 or 2 children. 
 
   No. of Nodes in Binary Tree = 2 * h – 1
+
+
+  Tree Traversal is of Two Types : 
+1. DFS (Depth-First Search) 
+ a. Inorder
+ b. Preorder
+c. Postorder
+  
+  2. BFS/ Level order Traversal
+
