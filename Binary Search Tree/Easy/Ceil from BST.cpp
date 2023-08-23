@@ -1,4 +1,4 @@
-Find : Equal or Smallest number greater than given input
+Find : Equal or Smallest number greater than given input  [ val >= key ] 
 
 Eg1. input : 8 5 10 2 6 -1 -1 -1 -1 -1 7 -1 -1
 num = 4
