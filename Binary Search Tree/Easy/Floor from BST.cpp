@@ -1,4 +1,4 @@
-Smallest or equal to greater number than input [val <= key]
+Smallest or equal number than input [val <= key]
 
 
 int Floor(BinaryTreeNode<int> *node, int input)
