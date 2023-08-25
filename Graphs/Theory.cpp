@@ -19,5 +19,6 @@ Graph Representation
  1. Adjacency Matrix : It is symmetric for undirected graph
      Space Required : O(V * V) 
  2. Adjacency List
-     Space Required : O(2 * Edges) 
+     Space Required : O(2 * Edges) -> For undirecred graph
+                      O(Edges)    -> For Directed Graph
   
