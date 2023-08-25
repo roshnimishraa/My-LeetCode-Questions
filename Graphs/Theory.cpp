@@ -22,3 +22,9 @@ Graph Representation
      Space Required : O(2 * Edges) -> For undirecred graph
                       O(Edges)    -> For Directed Graph
   
+
+Graph Indexing is of two types 
+1. 0 based indexing adj[n]
+2. 1 based indexing  adj[n+1] 
+
+
