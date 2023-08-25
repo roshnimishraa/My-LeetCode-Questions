@@ -9,4 +9,4 @@ It is the number of edges that go inside or outside that node.
 eg.  social network
 
 For Directed Graph : The indegree of a node is the number of incoming edges. The outdegree of a node is the number of outgoing edges.
-eg. www
+eg. www(world wide web)
