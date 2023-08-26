@@ -35,12 +35,12 @@ int vis[V]={0};
       
      bfs.push_back(node);
      
-     for(auto it : adj[node]){
-         //check if previously visited that node
-         if(!vis[it]){
-             vis[it]=1;
-             q.push(it);
-         }
+   for(auto it:adj[front]){
+        if(vis[it] !=1){
+            vis[it]=1;
+            q.push(it);
+    
+        }
      }
   }
   return bfs;
