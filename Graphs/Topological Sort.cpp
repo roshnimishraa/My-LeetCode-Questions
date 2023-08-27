@@ -7,6 +7,14 @@ Approach :
 2. explore all the neighbours of node and push into stack and mark 1 in visited array 
 3. if stack is empty pop of out and push into ans vector 
 
+why DFS Traversal ?
+	DFS goes in-depth, i.e., traverses all nodes by going ahead, and when there are no further nodes to traverse in the current path,
+then it backtracks on the same path and traverses other unvisited nodes.
+
+Time Complexity: O(V+E)+O(V), where V = no. of nodes and E = no. of edges. There can be at most V components. So, another O(V) time complexity.
+Space Complexity: O(2N) + O(N) ~ O(2N): O(2N) for the visited array and the stack carried during DFS calls and O(N) for recursive stack space, 
+where N = no. of nodes.
+
 Eg. For the edges connection 
 5->0
 4->0
