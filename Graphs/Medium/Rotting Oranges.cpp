@@ -1,9 +1,10 @@
  TC : O(N * M) 
  SC : O(N * M) 
 
-The algorithm steps are as follows:
+The algorithm steps are as follows 
 
-1. For BFS traversal, we need a queue data structure and a visited array. Create a replica of the given array, i.e., create another array of the same size and call it a visited array. We can use the same matrix, but we will avoid alteration of the original data. 
+1. For BFS traversal, we need a queue data structure and a visited array. Create a replica of the given array, i.e.,
+ create another array of the same size and call it a visited array. We can use the same matrix, but we will avoid alteration of the original data. 
 2. The pairs of cell number and initial time, i.e., <<row, column>, time> will be pushed in the queue and marked as visited (represents rotten) in the visited array. For example, ((2,0), 0) represents cell (2, 0) and initial time 0.  
 3. While BFS traversal, pop out an element from the queue and travel to all its neighbours. In a graph, we store the list of neighbours in an adjacency list but here we know the neighbours are in 4 directions. 
 4. We go in all 4 directions and check for valid unvisited fresh orange neighbours. To travel 4 directions we will use nested loops, you can find the implementation details in the code. 
