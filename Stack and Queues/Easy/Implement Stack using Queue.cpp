@@ -8,6 +8,8 @@ For Push(x)
 TC : O(N) 
 SC : O(N) 
 
+Logic : (Using 2 queues with O(n) pop)
+
 class MyStack {
 public:
     queue<int> q1;
@@ -27,7 +29,7 @@ while(!q1.empty()){
     }
     
     int pop() {
-     int ans = top();
+     int ans = q1.front();
         q1.pop();
         return ans;
     }
@@ -43,7 +45,41 @@ while(!q1.empty()){
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Follow up question :  implement the stack using only one queue?
+Follow up question :  implement the stack using only one queue?  
+
+Logic : (Using single queue with O(n) push)
+
+class MyStack {
+public:
+queue<int> q;
+    MyStack() {
+        q = queue<int>();
+    }
+    
+    void push(int x) {
+        q.push(x);
+        int n = q.size();
+        // reverse order push
+        for(int i=0;i<n-1;i++){
+          q.push(q.front());
+          q.pop();
+        }
+    }
+    
+    int pop() {
+        int ans = q.front();
+        q.pop();
+        return ans;
+    }
+    
+    int top() {
+        return q.front();
+    }
+    
+    bool empty() {
+        return q.empty();
+    }
+};
 
 
     
