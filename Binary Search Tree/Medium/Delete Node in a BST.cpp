@@ -2,7 +2,8 @@
 Time Complexity: O(h), where h is the height of the BST. 
 Auxiliary Space: O(n).
 
-/**
+
+    /**
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -41,10 +42,12 @@ if(root->left == NULL && root->right == NULL){
 if(root->left != NULL && root->right == NULL)
 {
 TreeNode *temp = root->left;
+delete root;
  return temp;
 }
 if(root->left == NULL && root->right != NULL){
 TreeNode *temp = root->right;
+delete root;
  return temp;
 }
 
