@@ -79,3 +79,72 @@ return dist;
 
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Dijkstra Algorithm using SET 
+
+Time Complexity : O( E log(V) ) 
+Where E = Number of edges and V = Number of Nodes.
+Space Complexity : O( |E| + |V| ) 
+Where E = Number of edges and V = Number of Nodes.
+
+#include <bits/stdc++.h> 
+vector<int> dijkstra(vector<vector<int>> &edge, int vertices, int edges, int source)
+{
+    set<pair<int,int>> st;
+   vector<pair<int,int>> adj[vertices];
+  for(int i=0;i<edges;i++){
+          int u=edge[i][0];
+		  int v=edge[i][1];
+          int wt=edge[i][2]; 
+		  adj[u].push_back({v,wt});
+		  adj[v].push_back({u,wt});
+   }
+	vector<int>dist(vertices,INT_MAX);
+        
+st.insert({0,source});
+dist[source]=0;
+
+while(!st.empty())
+{
+ //get the it val 
+ auto it = *(st.begin());
+ int dis = it.first;
+ int node = it.second;
+ st.erase(it);
+ 
+ for(auto it : adj[node])
+ {
+ 			int adjnode=it.first;
+			int edgewt=it.second;
+            
+	if(dis+edgewt<dist[adjnode]){		
+     if(dist[adjnode] != INT_MAX){
+       st.erase({dist[adjnode],adjnode});
+}
+     dist[adjnode] = dis + edgewt;
+     st.insert({dist[adjnode],adjnode});
+}
+ }
+}
+return dist;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
