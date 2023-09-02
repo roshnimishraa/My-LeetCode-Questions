@@ -1,4 +1,4 @@
-1, We would be using a min-heap and a distance array of size V (where ‘V’ are the number of nodes in the graph) initialized with
+1. We would be using a min-heap and a distance array of size V (where ‘V’ are the number of nodes in the graph) initialized with
 infinity (indicating that at present none of the nodes are reachable from the source node) and initialize the distance to source node as 0.
 2. We push the source node to the queue along with its distance which is also 0.
 3. For every node at the top of the queue, we pop the element out and look out for its adjacent nodes. If the current reachable distance 
