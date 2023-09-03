@@ -1,3 +1,31 @@
+Brute Force : Sort in-built function 
+TC : O(N LOG N) 
+1. Sort the array 
+2. Return n/2 element
+
+Better Approach : Unordered_map 
+    store ele,count if count >n/2 return ele      
+    TC : O(N) 
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int,int> umap;
+        int n=nums.size();
+        for(int i : nums)
+        {
+            umap[i]++;
+        }
+   for(auto it : umap)
+   {
+       if(it.second > n/2){
+           return it.first;
+       }
+   }
+   return 0;
+    }
+};
+
 
 Efficient Approach :Moore's Voting Algorithm (Majority Element in an Array >(N/2) time
 
