@@ -36,3 +36,42 @@ else{
 return {0,0};
     }
 };
+
+Approach 3 : Two Pointer
+TC : O(N) + sort O (N LOGN ) ~ O(N) 
+SC O(1) 
+
+Algo 
+1. Sort the array 
+2. take left and right pointer where 
+left =0 and right = n-1
+now if arr[left]+arr[right] < target then left++
+else if (arr[left]+arr[right] > target then 
+    right--
+else if arr[left] + arr[right] == target return "YES"
+else 
+    return "NO"
+    
+
+
+string read(int n, vector<int> book, int target)
+{
+ int left=0;
+ int right = n-1;
+ sort(book.begin(),book.end());
+ 
+ while(left<=right){
+    int check_num = book[left]+book[right];
+    if(check_num < target){
+        left++;
+    }
+    else if(check_num> target) {
+        right--;
+    }
+    else if(check_num == target){
+        return "YES";
+    }
+   
+ }
+ return "NO";
+}
