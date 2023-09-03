@@ -10,6 +10,12 @@ Efficient Approach :
 TC :  O(N) 
 SC :O(1) 
 
+    Algo : 
+1. First find the min price
+2. then price[i]-min = maxProfit
+3. return maxProfit
+
+    
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
