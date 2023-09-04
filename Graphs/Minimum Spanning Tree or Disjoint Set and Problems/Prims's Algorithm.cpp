@@ -3,6 +3,24 @@ Approach : Greedy
 Time Complexity: O(E*logE) + O(E*logE)~ O(E*logE), where E = no. of given edges.
 Space Complexity: O(E) + O(V)
 
+ Algorithm : 
+1. Create a min-heap priority queue store weight and node of a graph
+2. Make adjacency list if not give 
+3. Initialize sum = 0 
+4. Create a vector vis arrray initially assigned as 0 to keep track of vis node 
+ if node is vis then do not consider its weight continue 
+5. Traverse till pq is not empty 
+ pop weight and node from pq 
+a) if node is vis then continue 
+b) if node is not vis then mark it as visited 
+   and weight into sum sum += wt
+6. Now, Iterate through adjNode 
+mark adjNode as it[0] and edgeWeight it[1] 
+if (adjNode is not visited in visited array)   
+   pq.push({edgeWt,adjNode});
+7. return sum 
+
+ 
 #include<bits/stdc++.h>
 int minimumSpanningTree(vector<vector<int>>& edges, int n)
 {
