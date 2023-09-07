@@ -1,3 +1,5 @@
+Approach : DFS 
+
 TC : O(N) + O(V + 2 * E)
 sc : O(N)
 
