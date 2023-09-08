@@ -3,6 +3,13 @@ Approach : DFS
 TC : O(N) + O(V + 2 * E)
 sc : O(N)
 
+Algorithm 
+1. The task is to return no. of connected graph t
+ create adjList and a vis array 
+2. vis all nodes using dfs traversal and do count++
+3. write dfs traversal 
+4. return count
+
 class Solution {
     private:
     void dfs(int node,vector<int> &vis,vector<int> adj[])
