@@ -21,6 +21,8 @@ ii) DFS Approach :
 Take currentColor,color,node,adj
 
 6. Topological Sort 
-
+a) DFS : use stack and vis array and ans vec to store topo sort  
+TC : O(V+E)+O(V)
+b) BFS(Kahn's Algorithm) 
 
   
