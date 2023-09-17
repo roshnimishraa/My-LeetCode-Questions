@@ -12,47 +12,38 @@ and a node in the other.
 
 
 class Solution {
-    private:
-    bool check(int  start,int V,vector<int> adj[],int col[])
-    {
-        	  queue<int> q;
-	  q.push(start);
-	 col[start]=0;
-while(!q.empty())
-{
-    int node=q.front();
-    q.pop();
-    
-    for(auto it : adj[node])
-    {
-        if(col[it]==-1)
-        {
-            col[it]= !col[node];
-            q.push(it);
-            
+ private:
+   bool bfs(int start, vector<vector<int>>&adj, vector<int>&colors){
+        colors[start] =0;
+        queue<int> q;
+        q.push(start);
+        while(!q.empty()){
+
+            int node = q.front();
+            q.pop();
+            for(auto it: adj[node]){
+                if(colors[it]==-1){
+                    colors[it]= !colors[node];
+                    q.push(it);
+                }
+                else if(colors[it]==colors[node])
+                return false;
+            }
         }
-        else if(col[it] == col[node]){
-            // if already colored
-            return false;
-        }
-    }
-}
-      
-return true;
+        return true;
     }
 public:
-	bool isBipartite(int V, vector<int>adj[]){
-	 int color[V];
-	for(int i=0;i<V;i++)
-	{
-	   color[i]=-1;
-	}
+    bool isBipartite(vector<vector<int>>& graph) {
+        int V = graph.size();
+       
+vector<int> color(V,-1);
+	
 	
 for(int i=0;i<V;i++)
 {
     if(color[i]==-1)
     {
-        if(check(i,V,adj,color) == false){
+        if(bfs(i,graph,color) == false){
             //not bipartite
             return false;
         }
