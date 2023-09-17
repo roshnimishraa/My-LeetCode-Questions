@@ -12,5 +12,39 @@ Output: false
 Explanation: There is no way to partition the nodes into two independent sets such that every edge connects a node in one 
 and a node in the other.
 
+
+  class Solution {
+    bool dfs(int node,int currentColor,vector<int> &color,vector<vector<int>> &adj)
+    {
+        color[node]=currentColor;
+for(auto it : adj[node])
+{
+    if(color[it] == -1){
+        //if not colored color with opposite color 
+     if(dfs(it,!currentColor,color,adj)==false) return false;
+    }
+// if adjNode is previously colored 
+// and it is having same color 
+else if(color[it]== currentColor){
+    return false;
+}
+}
+return true;
+    }
+public:
+    bool isBipartite(vector<vector<int>>& graph) {
+        int V = graph.size();
+    vector<int> color(V,-1);
+
+for(int i=0;i<V;i++)
+{
+    if(color[i] == -1){
+        if(dfs(i,0,color,graph) == false)
+        return false;
+    }
+}
+return true;
+    }
+};
   
   
