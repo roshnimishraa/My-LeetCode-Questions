@@ -1,5 +1,8 @@
 Approach : DFS 
 
+Time Complexity: O(V+E)
+Auxiliary Space: O(V)
+  
 NOTE :
 1. Bipartite Graph :- Color the graph with 2 colors such that NO Adjacent nodes have same color. 
 2. Linear Grpahs with NO CYCLE are always Bipartite Graph 
