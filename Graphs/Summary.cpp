@@ -30,4 +30,10 @@ a) DFS : use stack and vis array and ans vec to store topo sort
 TC : O(V+E)+O(V)
 b) BFS(Kahn's Algorithm) : use indegree array,queue 
 
-  
+8. Prerequisite Tasks-I/ Course Schedule-I [1,0],[2,1] 
+i) Do TopoSort BFS Traversal(Kahn's Algo) and if no cycle then return true
+ if Cycle return false 
+ii)  Course Schedule-I [0,1],[1,2] 
+ 
+ 
+
