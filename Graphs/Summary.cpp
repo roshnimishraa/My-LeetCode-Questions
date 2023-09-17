@@ -15,10 +15,12 @@ ii) No. of Distinct Island -> DFS & vis & vector of pair of list & set to store 
 5. Bipartite Graph 
  Time complexity: O(V+E).
 Auxiliary Space: O(V)
-  
 i) BFS Approach : 
 Take queue and color(v,-1) take color initlially 0 
 ii) DFS Approach : 
 Take currentColor,color,node,adj
+
+6. Topological Sort 
+
 
   
