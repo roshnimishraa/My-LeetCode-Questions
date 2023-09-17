@@ -9,8 +9,9 @@ a) DFS -> parent & node & vis
 b) BFS -> queue {node,parent}, vis
 
 4. Detect Cycle in Directed Graph 
-a) DFS -> vis & pathVis
-b) BFS -> indegree & count if count < N then there is cycle 
+a) DFS -> vis & pathVis 
+b) BFS -> indegree & count
+ if there is cycle the count < N and is there is no cycle then count == N 
 
 5. DFS Approach (Islands) 
 i) No. of Islands -> DFS traversal & vis & count 
