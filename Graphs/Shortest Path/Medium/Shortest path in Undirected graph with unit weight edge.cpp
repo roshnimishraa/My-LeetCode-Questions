@@ -1,4 +1,4 @@
-Expected Time Complexity: O(N + E), where N is the number of nodes and E is edges
+Expected Time Complexity: O(N + 2E), where N is the number of nodes and E is edges
 Expected Space Complexity: O(N)
 
 Alogrithm : BFS Approach 
