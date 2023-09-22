@@ -11,90 +11,97 @@ Initial configuration:
 4. Distance Array intially mark infinity and take src node dist as 0
 
 Approach : Topological Sort using DFS
-
-1. Now, iterate on the topo sort. We can keep the generated topo sort in the stack only. Make sure for the source node, we will assign dist[src] = 0. 
-
-2. For every node that comes out of the stack which contains our topo sort, we can traverse for all its adjacent nodes, 
-and relax them. (Relax the edges means distance array)
-
-3. In order to relax them, simply do a simple comparison of dist[node] + wt and dist[adjNode]. Here dist[node] means the distance
-taken to reach the current node, and it is the edge weight between the node and the adjNode.
+given source =0 if for any node shortest path is not exist return -1
  
-4. If (dist[node] + wt < dist[adjNode]), then we will go ahead and update the distance of the dist[adjNode] to the new found better path.
-
-5. Once all the nodes have been iterated, the dist[] array will store the shortest paths and we can then return it.
+1. Make adj list 
+2. Find the topoSort using DFS 
+3. Takes the nodes out of stack and explore its neighbour dist and relax the edges (using dis[] array) 
+4. Initialize dist[] initially as INT_MAX and mark source node as 0 and find shortest distance
+5. if(dist[node] + wt < dist[v]) then update dist[v] as dist[node] + wt 
+6. At the end, check if all nodes assigned shortest dist or not 
+   if any node dist[i] = INT_MAX then return -1
+7. return dist 
 
 IMPLEMENTATION 
 
+// User function Template for C++
 class Solution {
-  private:
-    void topoSort(int node, vector < pair < int, int >> adj[],
-      int vis[], stack < int > & st) {
-      //This is the function to implement Topological sort. 
-      vis[node] = 1;
-      for (auto it: adj[node]) {
+    private:
+    void dfs(int node,int vis[],vector<pair<int,int>> adj[],stack<int> &st)
+    {
+        vis[node]=1;
+        
+    for(auto it : adj[node])
+    {
         int v = it.first;
-        if (!vis[v]) {
-          topoSort(v, adj, vis, st);
+        if(!vis[v])
+        {
+            dfs(v,vis,adj,st);
         }
-      }
-      st.push(node);
+    }
+    st.push(node);
     }
   public:
-    vector < int > shortestPath(int N, int M, vector < vector < int >> & edges) {
+     vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
+// adj list -> {node,wt}
+vector<pair<int,int>> adj[N];
+int vis[N]={0};
 
-      //We create a graph first in the form of an adjacency list.
-      vector < pair < int, int >> adj[N];
-      for (int i = 0; i < M; i++) {
-        int u = edges[i][0];
+// ADJ LIST 
+    for(int i=0;i<M;i++)
+    {
+        int u=edges[i][0];
         int v = edges[i][1];
         int wt = edges[i][2];
-        adj[u].push_back({v, wt}); 
-      }
-      // A visited array is created with initially 
-      // all the nodes marked as unvisited (0).
-      int vis[N] = {
-        0
-      };
-      //Now, we perform topo sort using DFS technique 
-      //and store the result in the stack st.
-      stack < int > st;
-      for (int i = 0; i < N; i++) {
-        if (!vis[i]) {
-          topoSort(i, adj, vis, st);
+        adj[u].push_back({v,wt});
+    }
+    // OR ADJ LIST 
+//     for (auto it : edges) {
+// 			adj[it[0]].push_back({it[1], it[2]});
+// 		}
+    
+    // find dfs toposort 
+stack<int> st;
+for(int i=0;i<N;i++)
+{
+    if(!vis[i])
+    {
+        dfs(i,vis,adj,st);
+        
+    }
+}
+
+// find shortest dist 
+vector<int> dis(N);
+for(int i=0;i<N;i++)
+{
+    // dis[i] = INT_MAX;
+    dis[i]=1e9;
+}
+//dist of source =0 src give as 0
+dis[0]=0;
+
+while(!st.empty())
+{
+auto node = st.top();
+st.pop();
+
+// explore adj nodes
+for(auto it : adj[node])
+{
+    int v = it.first;
+    int wt = it.second;
+    
+    if(dis[node] + wt < dis[v])
+{
+    dis[v] = dis[node]+wt;
+}
+}
+}
+  for (int i = 0; i <dis.size(); i++) {
+            if (dis[i] ==  1e9) dis[i] = -1;
         }
-      }
-      //Further, we declare a vector ‘dist’ in which we update the value of the nodes’
-      //distance from the source vertex after relaxation of a particular node.
 
-      vector < int > dist(N);
-      for (int i = 0; i < N; i++) {
-        dist[i] = 1e9;
-      }
-
-      dist[0] = 0;
-      while (!st.empty()) {
-        int node = st.top();
-        st.pop();
-
-        for (auto it: adj[node]) {
-          int v = it.first;
-          int wt = it.second;
-
-          if (dist[node] + wt < dist[v]) {
-            dist[v] = wt + dist[node];
-          }
-        }
-      }
-
-      for (int i = 0; i < N; i++) {
-        if (dist[i] == 1e9) dist[i] = -1;
-      }
-      return dist;
+return dis;
     }
 };
-
-
-
-
-
