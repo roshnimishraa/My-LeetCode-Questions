@@ -1,5 +1,5 @@
 Expected Time Complexity: O(N + 2E), where N is the number of nodes and E is edges
-Expected Space Complexity: O(N)
+Expected Space Complexity: O(N+E)
 
 Alogrithm : BFS Approach 
 1. Make a adj List store nodes 
