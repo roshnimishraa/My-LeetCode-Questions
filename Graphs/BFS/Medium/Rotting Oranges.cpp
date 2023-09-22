@@ -10,7 +10,6 @@ in the visited array. For example, ((2,0), 0) represents cell (2, 0) and initial
 3. While BFS traversal, pop out an element from the queue and travel to all its neighbours. In a graph, we store the list of neighbours in an adjacency
 list but here we know the neighbours are in 4 directions. 
 4. We go in all 4 directions and check for valid unvisited fresh orange neighbours. To travel 4 directions we will use nested loops,
-you can find the implementation details in the code. 
 5. BFS function call will make sure that it starts the BFS call from each rotten orange cell, and rotten all the valid fresh orange 
 neighbours and puts them in the queue with an increase in time by 1 unit. Make sure to mark it as rotten in the visited array.  
 6. Pop-out another rotten orange from the queue and repeat the same steps until the queue becomes empty.
