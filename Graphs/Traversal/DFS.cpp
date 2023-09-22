@@ -1,27 +1,30 @@
 class Solution {
     private:
-    void dfs(int node, vector<int> adj[],int vis[],vector<int> &ls)
+      void dfs(int node,int vis[],vector<int> adj[], 
+    vector<int> &ans)
     {
         vis[node]=1;
-        ls.push_back(node); 
-        
-        
-    //traverse all the neighbours of node 
+    ans.push_back(node);
     for(auto it : adj[node])
     {
-        if(vis[it] !=1){
-            dfs(it,vis,adj,ls);
+        if(!vis[it])
+        {
+            dfs(it,vis,adj,ans);
         }
     }
     }
   public:
     // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
-    vector<int> ls; // to store dfs traversal
-    int vis[V] = {0}; // mark every node as 0 in an array
-    int start = 0; //starting index is 0th index
-    
-    dfs (start,adj,vis,ls);
-    return ls;
+ int vis[V] = {0};
+ vector<int> ans;
+ for(int i=0;i<V;i++)
+ {
+     if(!vis[i])
+     {
+         dfs(i,vis,adj,ans);
+     }
+ }
+ return ans;
     }
 };
