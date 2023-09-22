@@ -16,33 +16,26 @@ Approach :
 
 
   
-vector<int> bfsOfGraph(int V, vector<int> adj[]) {
-  
-//taking a visited array and Initially marked as 0
+  vector<int> bfsOfGraph(int V, vector<int> adj[]) {
 int vis[V]={0};
-//In BFS,start with a “starting” node, mark it as visited,
-//and push it into the queue data structure.
-  vis[0] = 1;
+queue<int> q;
 
-  queue<int> q;
-  q.push(0);  //push starting node
-  
- // store bfs traversal 
- vector<int> bfs;
-  while(!q.empty()){
-      int node = q.front();
-      q.pop();
-      
-     bfs.push_back(node);
-     
-   for(auto it:adj[front]){
-        if(vis[it] !=1){
-            vis[it]=1;
-            q.push(it);
-    
-        }
-     }
-  }
-  return bfs;
+  vis[0] = 1;
+q.push(0);
+vector<int> ans;
+while(!q.empty())
+{
+    auto node = q.front();
+    q.pop();
+    ans.push_back(node);
+for(auto it : adj[node])
+{
+    if(!vis[it])
+    {
+        vis[it]=1;
+        q.push(it);
     }
-};
+}
+}
+return ans;
+    }
