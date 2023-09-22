@@ -15,7 +15,8 @@ It can be implemented using :
 **************************************************************************************************************************************************************
   Dijktra Algorithm using Priority Queue 
 
-TC : E log V, where E = Total no. of Edges and V = No. of Nodes
+TC : E log V, 
+where E = Total no. of Edges and V = No. of Nodes
 
 Algorithm 
 
@@ -28,12 +29,13 @@ b) assign source node as 0
 
 3. push src node and 0 as distance in pq
 
-4. Iterate through pq get 
+4. Iterate through pq get ({dist,node})
        dist = pq.top().first
         node =pq.top().second
 and explore it's adjacent Nodes
 
 5. Traverse for Adjcent Node and assign edge Weight as 
+	// Adj List = {node,weight}
     edgeWeight = it[1] 
      adjNode = it[0] 
  
@@ -47,37 +49,48 @@ pq.push({dist[adjNode],adjNode})
 
 **********************IMPLEMENTATION*****************************************************
 
-#include <bits/stdc++.h>
-vector<int> dijkstra(vector<vector<int>> &edge, int vertices, int edges, int source)
+class Solution
 {
-vector<pair<int,int>>adj[vertices];
-for(auto it : edge){
-adj[it[0]].push_back({it[1],it[2]});
-adj[it[1]].push_back({it[0],it[2]});
-}
-vector<int>dist(vertices,INT_MAX);
-dist[source]=0;
-priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
-pq.push({0,source});
-
-while(!pq.empty()){
-int node=pq.top().second;
-int dis=pq.top().first;
-pq.pop();
-for(auto it: adj[node]){
-int adjNode=it.first;
-int wt=it.second;
-
-if(dis+wt<dist[adjNode]){
-dist[adjNode]=dis+wt;
-pq.push({dist[adjNode],adjNode});
-
-}
-}
-}
-return dist;
-
-}
+	public:
+	//Function to find the shortest distance of all the vertices
+    //from the source vertex S.
+    vector <int> dijkstra(int V, vector<vector<int>> adj[], 
+    int S)
+    {
+       vector<int> dist(V);
+       for(int i=0;i<V;i++) dist[i]=1e9;
+       dist[S]=0;
+       
+    //   pq {dist,node} 
+ priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+     
+    pq.push({0,S});
+    
+    while(!pq.empty())
+    {
+        auto it = pq.top();
+        pq.pop();
+        int distance = it.first;
+        int node = it.second;
+        
+    // traverse neighbour nodes
+    for(auto it : adj[node])
+    {
+        // adj List -> {node,weight}
+        int adjNode = it[0];
+        int weight = it[1];
+        
+    if(distance + weight < dist[adjNode])
+    {
+        dist[adjNode] =distance + weight;
+        // pq -> {dist,node}
+        pq.push({dist[adjNode],adjNode});
+    }
+    }
+    }
+    return dist;
+    }
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
