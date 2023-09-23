@@ -119,3 +119,9 @@ mark diagonal (i==j) as 0
 Assign initial cost to node 
 iii. Make resultant matrix via every node traverse through all the edges
 iv. For node n traverse -> shortest path matrix found 
+
+14. Minimum Spanning Tree 
+i) N nodes N-1 edges 
+ii) Connected & No Cycle 
+iii) Two Method to find MST - a) Prim's Algorithm (b) Kruskal's Algorithm 
+	
