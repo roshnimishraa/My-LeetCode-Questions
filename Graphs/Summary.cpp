@@ -95,13 +95,26 @@ vii. return dist
 TC : O(V * E) 
 SC : O(V) 
 Algorithm : vector dist[]  
-1. take a dist[] initialized with MAX value 
-2. assign source node as 0 
-3. iterate till N-1 times and 
+i. take a dist[] initialized with MAX value 
+ii. assign source node as 0 
+iii. iterate till N-1 times and 
        iterate through all the edges 
-i) Update dist if 
+a) Update dist if 
    dist[u] != 1e8 &&  dist[u] + wt < dist[v] 
-4. if the graph for Nth iteratation distance get reduced that means it has -ve cycle then it will not give shortest
+iv. if the graph for Nth iteratation distance get reduced that means it has -ve cycle then it will not give shortest
 path therefore again iterate all the edges and check 
 if(dist[u] != 1e8 && dist[u] + wt < dist[v] return -1 
-5. return dist
+v. return dist
+
+13. floyd Warshall Algorithm (MultiSource Directed Graph, -ve cycle detect) 
+TC : O(N)^3
+SC : O(N)^2 for storing adj matrix 
+
+Traverse on all paths using three for loop via traversing through every node to find shortest path 
+i. take adj/cost matrix 
+ii. node to node distance is always 0 and distance from vertex 0 is gets same 
+ mark unreachable node as INT_MAX 
+mark diagonal (i==j) as 0  
+Assign initial cost to node 
+iii. Make resultant matrix via every node traverse through all the edges
+iv. For node n traverse -> shortest path matrix found 
