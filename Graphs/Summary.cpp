@@ -125,3 +125,17 @@ i) N nodes N-1 edges
 ii) Connected & No Cycle 
 iii) Two Method to find MST - a) Prim's Algorithm (b) Kruskal's Algorithm 
 	
+15. Prim's Algorithm (find the sum of weights of the edges of the Minimum Spanning Tree.) 
+TC : O(E log E) 
+SC : O(V + E) 
+i) Take a adj list store {node,wt} 
+ii) Take a min-heap priority queue store {wt , node} 
+     push src =0 in pq 
+iii) Take a vis[] initialize with 0
+iv) Iterate till pq get empty
+a) take out of pq {wt,node} 
+b) if node is already vis then do not do anything continue
+c) if node is not visited then mark it as vis and calculate sum += wt
+d) Traverse through neighbour nodes {adjNode,edgeWt} 
+      if adjNode is not vis then push {adjNode,edgeWt} in pq
+v) return sum 
