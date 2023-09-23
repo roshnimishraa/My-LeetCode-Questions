@@ -91,4 +91,17 @@ pq.push({dist[adjNode],adjNode})
 
 vii. return dist
 
-12. Bellman Ford(Single Source Shortest path for +ve edges) 
+12. Bellman Ford(Single Source Shortest path for -ve edges)
+TC : O(V * E) 
+SC : O(V) 
+Algorithm : vector dist[]  
+1. take a dist[] initialized with MAX value 
+2. assign source node as 0 
+3. iterate till N-1 times and 
+       iterate through all the edges 
+i) Update dist if 
+   dist[u] != 1e8 &&  dist[u] + wt < dist[v] 
+4. if the graph for Nth iteratation distance get reduced that means it has -ve cycle then it will not give shortest
+path therefore again iterate all the edges and check 
+if(dist[u] != 1e8 && dist[u] + wt < dist[v] return -1 
+5. return dist
