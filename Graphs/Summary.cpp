@@ -110,6 +110,7 @@ v. return dist
 TC : O(N)^3
 SC : O(N)^2 for storing adj matrix 
 
+Algorithm ~ adj matrix 
 Traverse on all paths using three for loop via traversing through every node to find shortest path 
 i. take adj/cost matrix 
 ii. node to node distance is always 0 and distance from vertex 0 is gets same 
