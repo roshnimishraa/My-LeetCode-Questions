@@ -1,3 +1,7 @@
+Prim's Algorithm
+1. Consider any vertex as source node
+2. Find min edges with NO cycle 
+
 Approach : Greedy
 
 Time Complexity: O(E*logE) + O(E*logE)~ O(E*logE), where E = no. of given edges.
