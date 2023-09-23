@@ -1,3 +1,7 @@
+Approach : 
+i) Convert 
+ii) Fit into bits 
+
 Eg. (634) = ( ) convert into octal 
 
 After solving LCM by num % 8 & n = n/base 
