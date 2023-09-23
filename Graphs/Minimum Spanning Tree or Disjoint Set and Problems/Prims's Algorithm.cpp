@@ -25,42 +25,51 @@ if (adjNode is not visited in visited array)
 7. return sum 
 
  
-#include<bits/stdc++.h>
-int minimumSpanningTree(vector<vector<int>>& edges, int n)
+class Solution
 {
- priority_queue<pair<int,int>,vector<pair<int,int>>,
- greater<pair<int,int>>>pq;
-vector<vector<pair<int,int>>> adj(n);
- vector<int> vis(n,0);
-for(int i=0;i<edges.size();i++)
+	public:
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
+    int spanningTree(int V, vector<vector<int>> adj[])
+    {
+      //adj list -> {wt} 
+      // pq-min heap -> {wt,node}
+      // vis[]
+      //mst []
+      
+   priority_queue<pair<int,int>,vector<pair<int,int>>,
+   greater<pair<int,int>>> pq;
+   
+   vector<int> vis(V,0);
+   pq.push({0,0}); //{wt,node}
+      
+     int sum=0;
+     while(!pq.empty())
+     {
+         auto it = pq.top();
+         pq.pop();
+         int wt =it.first;
+         int node = it.second;
+         
+    //if node already vis then don't do anything
+if(vis[node] == 1) continue;
+
+//if node is not vis then mark it as vis and
+// cal sum 
+vis[node] = 1;
+sum += wt;
+
+//traverse through adjacent nodes
+for(auto it : adj[node])
 {
-    int u = edges[i][0];
-    int v = edges[i][1];
-    int wt = edges[i][2];
-    adj[u].push_back({v,wt});
-    adj[v].push_back({u,wt});
-}
- int sum=0;
- pq.push({0,0});
-
- while(!pq.empty())
- {
-     auto it = pq.top();
-     pq.pop();
-     int wt = it.first;
-     int node= it.second;
-
-    if(vis[node]==1) continue;
-    vis[node] = 1;
-    sum += wt;
+    int adjNode = it[0];
+    int edgeWeight = it[1];
     
-    for(auto it : adj[node]){
-        int adjNode = it.first;
-        int edgeWt = it.second;
-    if(!vis[adjNode]) {
-        pq.push({edgeWt,adjNode});
+    if(!vis[adjNode])
+    {
+        pq.push({edgeWeight,adjNode});
     }
-    }
- }
- return sum;
 }
+     }
+     return sum;
+    }
+};
