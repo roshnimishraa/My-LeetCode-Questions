@@ -28,3 +28,57 @@ II. Maximum Slot = Maximum Deadline = 3
    Job between 2 to 3 -> J4 
   
 
+/*
+struct Job 
+{ 
+    int id;	 // Job Id 
+    int dead; // Deadline of job 
+    int profit; // Profit if job is over before or on deadline 
+};
+*/
+
+class Solution 
+{
+    public:
+    static bool cmp(Job a, Job b)
+    {
+        return a.profit > b.profit;
+    }
+    vector<int> JobScheduling(Job arr[], int n) 
+    { 
+        sort(arr,arr+n,cmp);
+        
+        int maxSlot = INT_MIN;
+        for(int i=0;i<n;i++)
+        {
+            maxSlot = max(maxSlot,arr[i].dead);
+            
+        }
+    // becaz using 1 based indexing 
+  vector<int> schedule(maxSlot+1,-1);
+   int count=0; // no of jobs done 
+   int maxProfit =0;
+   for(int i=0;i<n;i++)
+   {
+       int currProfit = arr[i].profit;
+       int currJobID = arr[i].id;
+       int currDead = arr[i].dead;
+        
+        for(int k = currDead; k>0; k--)
+        {
+            if(schedule[k] == -1)
+            {
+                count++;
+                maxProfit += currProfit;
+                schedule[k] = currJobID;
+                //no need to process further 
+                break;
+            }
+        }
+   }
+        vector<int> ans;
+        ans.push_back(count);
+        ans.push_back(maxProfit);
+        return ans;
+    } 
+};
