@@ -53,6 +53,7 @@ class Solution
             int remain = W- currWeight;
  finalValue += (arr[i].value / (double)arr[i].weight)
                  * (double) remain;
+            //ans found 
     break; 
         }
     }
