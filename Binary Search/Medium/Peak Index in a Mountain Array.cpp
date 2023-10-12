@@ -18,7 +18,7 @@ public:
 };
 
 Efficient Approach : Binary Search 
-TC : O(N LOG N) 
+TC : O(LOG N) 
 SC : O(1) 
 
 class Solution {
