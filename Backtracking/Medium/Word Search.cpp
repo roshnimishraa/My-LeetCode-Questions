@@ -9,37 +9,66 @@ Time Complexity:  O(m*n*4^k), where “K” is the length of the word. And we ar
 
 Space Complexity: O(K), Where k is the length of the given words.
 
-class Solution {
-public:
-    bool helper(vector<vector<char>>& board,string word,int i,int j,int n,int m,int k){
-        if(k >= word.size())return true;
-        if(i<0 || i>=n || j<0 || j>=m || board[i][j]=='.' || word[k]!=board[i][j]) return false;
-        if(word.size() == 1 && word[k]==board[i][j]) return true;
-        board[i][j] = '.';
 
-    //checking in all directions 
-        bool temp = false;
-        int x[4] = {0,0,-1,1};
-        int y[4] = {-1,1,0,0};
-        for(int index=0;index<4;index++){
-            temp = temp || helper(board,word,i+x[index],j+y[index],n,m,k+1);
-        }
-        board[i][j] = word[k];
-        return temp;
+class Solution {
+    private :
+bool helper(int row,int col,int index,vector<vector<char>> &board,string &word)
+{
+ int m = board.size();
+    int n = board[0].size();
+ 
+    if(index == word.length())
+    {
+        return true;
+    }
+
+    //base condition 
+if(row<0 || col<0 || row>=m || col>=n || board[row][col]=='$')
+{
+    return false;
+}
+    
+ if(board[row][col] != word[index])
+    {
+        return false;
     }
     
-    bool exist(vector<vector<char>>& board,string word) {
-        int n=board.size();
-        if(n==0) return false;
-        int m=board[0].size();
-        if(word.size()==0) return false;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(word[0]==board[i][j]){
-                     if(helper(board,word,i,j,n,m,0))return true;
-                }
-            }
-        }
+    char temp = board[row][col];
+    board[row][col] = '$';
+    
+    int dx[] = {-1,1,0,0};
+    int dy[]  = {0,0,1,-1};
+    
+for(int i=0;i<4;i++){
+    int nrow= row + dx[i];
+    int ncol = col+dy[i];
+    
+if(helper(nrow,ncol,index+1,board,word)==true)
+    return true;
+}
+
+    //if found found word
+  board[row][col]=temp;
+    return false;
+}
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+     int m = board.size();
+        int n = board[0].size();
+ 
+        int index=0;
+     for(int i=0;i<m;i++)
+     {
+      for(int j=0;j<n;j++){
+         //search first letter of the word
+          if(board[i][j] == word[0])
+          {
+             if(helper(i,j,index,board,word)==true)
+                 return true;
+          }
+      }
+     }
         return false;
     }
 };
+
