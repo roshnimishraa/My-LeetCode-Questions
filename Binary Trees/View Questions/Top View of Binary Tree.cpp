@@ -1,18 +1,27 @@
+Approach : Level Order Traversal + queue + map 
+1. Take a queue of pair store node and horizontal distance 
+make a straight line from root their hd = 0 if overlapping node print smaller first then other 
+hd = -2 -1 0 1 2 
+2. Take a map to store (hd,node) store in sorted order with respect to horizontal distance 
+3. do level order traversal 
+a) traverse through starting nodes as root, and store it in queue
+b) until the queue is not empty store the node and hd
+c) if the hd is present in the map or not 
+i) if present that means there mapping(top view ) is already present store the node->left and node->right along with there hd to the queue
+ii) If not present then store the hd and the node->val to the map
+4. print the node->val from the map
+
 TC : O(N) 
-SC : O(N)
+SC : O(N) 
 
-Approach : 
-1. First we have to make a queue of pair which have nodes and their respective +ve and -ve indexes.
-2. Then we need a map data structure to store the lines and the nodes. This map will store the data in the form of sorted orders of keys(Lines).
-3. Here we will follow the level order traversal.
-4. Traverse through the nodes starting with root,0 and store them to the queue.
-5. Until the queue is not empty, store the node  and line no. in 2 separate variable .
-6. Then check if that line is present in the map or not
-7. If not present then store the line and the node->val to the map
-8. Otherwise store the node->left and node->right along with there line nos. to the queue.
-9. Then print the node->val from the map
-
-
+/*
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+};
+*/
 class Solution
 {
     public:
@@ -20,40 +29,41 @@ class Solution
     //from left to right in Binary Tree.
     vector<int> topView(Node *root)
     {
-      vector<int> ans;
-      if(root == NULL)  {
-          return ans;
-          
-      }
-      map<int,int> topNode;
-      //queue store line and node
-      queue<pair<Node *,int>> q;
-      
-      q.push(make_pair(root,0)); //  q.push({root, 0}); 
-      
-      while(!q.empty()){
-          //take front node value 
-         pair<Node*,int> temp = q.front();
-              q.pop();
-         Node *frontNode = temp.first;
- 
-         int hd = temp.second;
-         
-// if one entry is present for HD then ignore others 
-if(topNode.find(hd) == topNode.end())
-         topNode[hd] = frontNode->data;
-         
-         if(frontNode->left != NULL)
-         //left me -ve hoga horizontal distance
-    q.push(make_pair(frontNode->left,hd-1));
-    if(frontNode->right != NULL)
-    q.push(make_pair(frontNode->right,hd+1));
-         
-      }
-      for(auto i : topNode){
-          ans.push_back(i.second);
-      }
+  vector<int> ans;
+  if(root == NULL) {
       return ans;
+  }
+  //store (hd,node) in map
+ map<int ,int > mp;
+ //store (node,hd) in queue 
+ queue<pair<Node*,int>> q;
+ q.push({root,0});
+ while(!q.empty()){
+     auto it = q.front();
+     q.pop();
+  Node* node = it.first;
+     int hd = it.second;
+    
+//if in map one value is present for a hd then do nothing
+// if node does not exist in map
+if(mp.find(hd) == mp.end()){
+// add hd and node in map 
+mp[hd] = node->data;
+}
+
+if(node->left != NULL){
+    q.push({node->left,hd-1});
+}
+if(node->right != NULL) {
+    q.push({node->right,hd+1});
+}
+ }
+ //take ans from map 
+ for(auto i : mp){
+// i-> ({node,hd}) -> I want node
+ans.push_back(i.second);
+ }
+ return ans;
     }
 
 };
