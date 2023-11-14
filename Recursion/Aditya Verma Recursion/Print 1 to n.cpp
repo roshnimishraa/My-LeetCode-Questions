@@ -1,3 +1,4 @@
+Hypothesis - Induction - Base Method 
 
 void fun(int n) {
   if(n == 1){
