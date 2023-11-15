@@ -1,3 +1,6 @@
+//T.C : O(N)
+//S.C : O(N) Stack space
+
 Logic 
 for s1 : 0 
     s2 : 0 1 
