@@ -1,6 +1,9 @@
 Problem Link : https://www.geeksforgeeks.org/problems/power-set4302/1
 
-
+/* 
+Time Complexity : O(2^N)
+Space Complexity : O(N)
+*/
 
 class Solution {
 public:
