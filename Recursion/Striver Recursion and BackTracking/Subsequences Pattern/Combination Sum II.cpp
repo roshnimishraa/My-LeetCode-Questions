@@ -51,3 +51,7 @@ sort(candidates.begin(),candidates.end());
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Efficient Approach : Subsequences based selection 
+
+/*TC : O(2^n * k) where n = number of subsequences 
+                 and k = average length of combinations
+SC : O(k*x) k = average length  x = no. of combinations */
