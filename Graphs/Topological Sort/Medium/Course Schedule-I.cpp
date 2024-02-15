@@ -15,70 +15,46 @@ Space Complexity: O(N) + O(N) ~ O(2N), O(N) for the indegree array, and O(N) for
 
 class Solution {
 public:
-    bool canFinish(int V, vector<vector<int>>& prerequisites) {
-        
-        vector<int> adj[V];
-        
-        vector<int> indegree(V, 0);
-        
-        // make adjacency list
-        
-        // find the indegree of every vertexes
-        
-        for(int i = 0; i < prerequisites.size(); i++)
-        {
-            int u = prerequisites[i][0];
-            
-            int v = prerequisites[i][1];
-            
-            adj[v].push_back(u);
-            
-            // update indegree
-            
-            indegree[u]++;
-        }
-        
-        // push all the vertices with indegree == 0, into queue
-        
-        queue<int> q;
-        
-        for(int i = 0; i < V; i++)
-        {
-            if(indegree[i] == 0)
-            {
-                q.push(i);
-            }
-        }
-        
-        int count = 0;
-        
+    bool canFinish(int N,  vector<vector<int>>& prerequisites)
+    {
+        vector<int> adj[N];
+    for(auto it:prerequisites)
+    {
+   
+   adj[it[0]].push_back(it[1]);
+    }
+// kahn's algo 
+vector<int> indegree(N,0);
+for(int i=0;i<N;i++)
+{
+    for(auto it:adj[i])
+    {
+    indegree[it]++;
+    }
+}
+queue<int> q;
+for(int i=0;i<N;i++)
+{
+    if(indegree[i]==0){
+q.push(i);
+    }
+}
 
-        while(!q.empty())
-        {
-            int u = q.front();
-            
-            q.pop();
-            
-            count++;
-            
-            // for every adjacent of u, decrement the indegree
-            
-            for(auto v : adj[u])
-            {
-                indegree[v]--;
-                
-                // if indegree becomes 0, then push into queue
-                
-                if(indegree[v] == 0)
-                {
-                    q.push(v);
-                }
-            }
-        }
- //there is no cycle that's means no dependency       
-        if(count == V) 
-            return true;
-        
-        return false;
+int count=0;
+while(!q.empty()){
+    auto node = q.front();
+    q.pop();
+count++;
+for(auto it:adj[node])
+{
+    indegree[it]--;
+    if(indegree[it]==0)
+    {
+        q.push(it);
+    }
+}
+}
+if(count == N) return true;
+return false;
     }
 };
